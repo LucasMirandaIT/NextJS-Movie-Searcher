@@ -10,8 +10,7 @@ import useDebounce from '../../hooks/useDebounce';
 import Link from 'next/link';
 
 import useTranslation from 'next-translate/useTranslation'
-// import useTranslation from 'next-translate/useTranslation'
-// const {t, lang} = useTranslation('home');
+
 const SearchInput = styled(TextField)({
     '& svg': {
         color: '#FFFFFF',
@@ -45,7 +44,11 @@ const SearchInput = styled(TextField)({
     },
 });
 
-const Search = (({ inputChange }) => {
+interface SearchInterface {
+    inputChange: (value: string) => void
+}
+
+const Search = (({ inputChange }: SearchInterface) => {
     
     const [inputValue, setInputValue] = useState('');
     const {t, lang} = useTranslation('search');

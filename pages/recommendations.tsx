@@ -1,6 +1,5 @@
 import { NextPage } from "next";
 import Head from 'next/head';
-import MoviesCarouselItem from "../components/MoviesCarousel/MoviesCarousel";
 
 import { getLatestMovies, getPopularMovies, getTopRatedMovies } from "../api/movie-db";
 import { useEffect, useState } from "react";
@@ -10,10 +9,9 @@ import router, { useRouter } from "next/router";
 import { Movie } from "../interfaces/movie";
 
 import styles from '../styles/Recommendations.module.css';
-import { Grid, Link } from "@mui/material";
+import { Grid } from "@mui/material";
 import MovieItem from "../components/MovieItem/MovieItem";
 import HomeIcon from '@mui/icons-material/Home';
-
 
 const Recommendations: NextPage = () => {
 

@@ -1,6 +1,6 @@
-import { Dialog, DialogContent, DialogContentText, DialogTitle, Slide } from "@mui/material";
-import { forwardRef, useEffect, useState } from "react";
-import { BACKDROP_URL, getMovie, getSimilarMovies, POSTER_URL } from "../../api/movie-db";
+import { DialogContent, DialogTitle } from "@mui/material";
+import { useEffect, useState } from "react";
+import { getMovie, getSimilarMovies, POSTER_URL } from "../../api/movie-db";
 import { Movie } from "../../interfaces/movie";
 
 import styles from './MovieDetailsModal.module.css';
@@ -11,14 +11,11 @@ import moment from 'moment';
 import useTranslation from 'next-translate/useTranslation'
 import { useRouter } from "next/router";
 import RelatedMovieItem from "../RelatedMovieItem/RelatedMovieItem";
-import { TransitionProps } from "@mui/material/transitions";
 
-// import useTranslation from 'next-translate/useTranslation'
-// const {t, lang} = useTranslation('common');
 
 interface MovieDetailsModalProps {
     movieId: number,
-    translationFile: string
+    translationFile?: string
 } 
 
 const MovieDetailsModal = (({ movieId, translationFile }: MovieDetailsModalProps) => {
@@ -41,6 +38,20 @@ const MovieDetailsModal = (({ movieId, translationFile }: MovieDetailsModalProps
         }
     }
 
+    
+    const fetchMovieData = (movieId: number) => {
+        getMovie(movieId, locale ?? 'en').then((res) => {
+            getRecommendations(movieId);
+            setMovieDetails(res);
+        });
+    };
+
+    const getRecommendations = (id: number) => {
+        getSimilarMovies(id, locale ?? 'en').then((res) => {
+            res && setSimilarMovies(res.results);
+        });
+    };
+
     useEffect(() => {
         if (movieId) {
             fetchMovieData(movieId);
@@ -49,35 +60,19 @@ const MovieDetailsModal = (({ movieId, translationFile }: MovieDetailsModalProps
 
     useEffect(() => {
         if (selectedMovie) {
-            fetchMovieData(selectedMovie.id.toString());
+            fetchMovieData(selectedMovie.id);
         }
     }, [selectedMovie]);
 
-    const backgroundImage = (path: string) =>
-        path && `url(${BACKDROP_URL}/${path})`;
-
-    const fetchMovieData = (movieId: string) => {
-        getMovie(movieId, locale ?? 'en').then((res) => {
-            getRecommendations(movieId);
-            setMovieDetails(res);
-        });
-    };
-
-    const getRecommendations = (id: string) => {
-        getSimilarMovies(id, locale ?? 'en').then((res) => {
-            res && setSimilarMovies(res.results);
-        });
-    };
-
     const renderSimilar = (similarMovies: Movie[]) => {
-        return similarMovies.splice(0, 5).map((movie) => {
+        return similarMovies.splice(0, 5).map((movie, key) => {
             return (<section onClick={() => handleClick(movie)}>
                 <RelatedMovieItem movie={movie} />
             </section>)
         })
     };
 
-    const handleClick = (movie) => {
+    const handleClick = (movie: Movie) => {
         setSelectedMovie(movie);
     };
 
@@ -102,12 +97,12 @@ const MovieDetailsModal = (({ movieId, translationFile }: MovieDetailsModalProps
             <DialogContent>
                 <main>
                     <div className={styles.movieSection}>
-                        <img className={styles.posterImg} src={`${POSTER_URL}${movieDetails?.poster_path}`} />
+                        <img className={styles.posterImg} src={`${POSTER_URL}${movieDetails?.poster_path}`} alt="Movie poster image"/>
                         <section className={styles.movieInformation}>
                             <section className={styles.movieDetails_genres}>
                                 <p className={styles.detailsKey}>{t('movieDetails.genres')}: &nbsp;</p>
                                 <p>
-                                    {movieDetails?.genres?.map((genre) => genre.name).join(', ')}
+                                    {movieDetails?.genres?.map((genre, key) => genre.name).join(', ')}
                                 </p>
                             </section>
                             <section className={styles.movieDetails_releaseDate}>

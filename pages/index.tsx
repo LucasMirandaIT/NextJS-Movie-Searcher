@@ -1,14 +1,12 @@
-import type { GetStaticPropsContext, NextPage } from 'next'
+import type { NextPage } from 'next'
 import Head from 'next/head';
 import styles from '../styles/Home.module.css'
-
 
 import Search from '../components/Search/Search';
 
 import MovieIcon from '@mui/icons-material/MovieOutlined';
 import { useState } from 'react';
 import MoviesList from '../components/MoviesList/MoviesList';
-
 
 const Home: NextPage = () => {
 
@@ -17,6 +15,9 @@ const Home: NextPage = () => {
   const changeSearchTerm = (value: string) => {
     setSearchTerm(value);
   }
+
+  const linkRel = "noreferrer";
+  
   return (
     <>
       <Head>
@@ -32,9 +33,9 @@ const Home: NextPage = () => {
             href="https://www.themoviedb.org/"
             title="The Movie DB Logo"
             target="_blank"
-            rel="noopener"
+            rel={linkRel}
           >
-            <img src="/assets/images/the-movie-db-logo.svg" className={styles.movieDbLogo} />
+            <img src="/assets/images/the-movie-db-logo.svg" className={styles.movieDbLogo} alt="The Movie DB Logo" />
           </a>
         </div>
         <h1 style={{ textTransform: "capitalize" }}> Movie Searcher </h1>

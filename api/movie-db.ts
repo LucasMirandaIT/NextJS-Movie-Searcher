@@ -12,7 +12,7 @@ export const getMovies = async (term: string, language: string) => {
     }
   };
   
-  export const getMovie = async (id: string, language: string) => {
+  export const getMovie = async (id: number, language: string) => {
     try {
       const response = await fetch(`${baseURL}/movie/${id}?api_key=${key}&language=${language}`);
       return response.json();
@@ -21,7 +21,7 @@ export const getMovies = async (term: string, language: string) => {
     }
   };
 
-  export const getSimilarMovies = async (id: string, language: string) => {
+  export const getSimilarMovies = async (id: number, language: string) => {
     try {
       const response = await fetch(`${baseURL}/movie/${id}/recommendations?api_key=${key}&language=${language}`);
       return response.json();

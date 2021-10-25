@@ -6,8 +6,11 @@ import { Grid } from '@mui/material';
 import MovieItem from '../MovieItem/MovieItem';
 import { useRouter } from 'next/router';
 
+interface MoviesListInterface {
+    searchTerm: string
+}
 
-const MoviesList = (({ searchTerm }) => {
+const MoviesList = (({ searchTerm }: MoviesListInterface) => {
     const [movies, setMovies] = useState([]);
 
     const { locale } = useRouter();
@@ -25,7 +28,7 @@ const MoviesList = (({ searchTerm }) => {
 
     return (
         <Grid container spacing={3} className={styles.moviesGrid}>
-            {movies.map((movie: any) => (
+            {movies.map((movie: any, key) => (
                 <Grid item xs={12} md={6} key={movie.id}>
                     <MovieItem movie={movie} />
                 </Grid>

@@ -1,7 +1,5 @@
-import { forwardRef, useEffect, useState } from 'react';
+import { forwardRef, useState } from 'react';
 import styles from './MovieItem.module.css';
-
-import Link from 'next/link';
 
 import { POSTER_URL } from '../../api/movie-db';
 
@@ -16,9 +14,6 @@ import useTranslation from 'next-translate/useTranslation'
 import { useRouter } from 'next/router';
 import { Movie } from '../../interfaces/movie';
 
-// import useTranslation from 'next-translate/useTranslation'
-// const {t, lang} = useTranslation('home');
-
 const Transition = forwardRef(function Transition(
     props: TransitionProps & {
         children?: React.ReactElement<any, any>;
@@ -30,7 +25,7 @@ const Transition = forwardRef(function Transition(
 
 interface MovieItemInterface {
     movie: Movie;
-    translationFile: string;
+    translationFile?: string;
 }
 
 const MovieItem = (({ movie, translationFile }: MovieItemInterface) => {
@@ -61,15 +56,13 @@ const MovieItem = (({ movie, translationFile }: MovieItemInterface) => {
 
     return (
         <>
-            {/* <Link href={{pathname: 'movie-details', query: {movieId: movie.id}}}> */}
             <Tooltip title={<h3>{t('movieItem.seeMore')}</h3>} arrow className={styles.movieTooltip}>
                 <section className={styles.movieInfo} onClick={handleClickOpen}>
-                    <img className={styles.posterImg} src={`${POSTER_URL}${movie.poster_path}`} />
+                    <img className={styles.posterImg} src={`${POSTER_URL}${movie.poster_path}`} alt="Movie poster image"/>
                     <div className={styles.movieDetailedInfo}>
                         <p className={styles.movieTitle}>{movie.title}</p>
                         <p className={styles.movieReleaseDate}>{moment(movie?.release_date).format(checkFormat())}</p>
                         <span>{movie.overview.substring(0, 200) + '...'}</span>
-                        {/* <h2>{movie.vote_average ? movie.vote_average + ' / 10' : 'NR'}</h2> */}
                     </div>
                 </section>
             </Tooltip>
@@ -82,9 +75,8 @@ const MovieItem = (({ movie, translationFile }: MovieItemInterface) => {
                 PaperProps={{style: {backgroundColor: '#081c24', color: 'white'}}}
                 aria-describedby="alert-dialog-slide-description"
             >
-                <MovieDetailsModal movieId={movie.id} open={open} translationFile={translationFile} handleClose={handleClose} />
+                <MovieDetailsModal movieId={movie.id} translationFile={translationFile} />
             </Dialog>
-            {/* </Link> */}
         </>
     )
 })
