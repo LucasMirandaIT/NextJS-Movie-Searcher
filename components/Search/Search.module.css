@@ -1,15 +1,15 @@
 .buttonFilters {
     width: 350px;
     height: 60px;
-    border-radius: 12px;
-    border: 2px solid #01D277;
-    color: #01D277;
-    transition: all .5s;
+    border-radius: 12px !important;
+    border: 2px solid #01D277 !important;
+    color: #01D277 !important;
+    transition: all .5s !important;
 }
 
 .buttonFilters:hover {
-    background-color: #01D277;
-    color: #000;
+    background-color: #01D277 !important;
+    color: #000 !important;
     font-weight: bold;
 }
 

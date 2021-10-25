@@ -24,7 +24,7 @@
   transition: all 1s;
 }
 .theatersIcon {
-  font-size: 10vw;
+  font-size: 10vw !important;
   color: #01D277;
 }
 
