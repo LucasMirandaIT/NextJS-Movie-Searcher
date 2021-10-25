@@ -1,0 +1,22 @@
+.buttonFilters {
+    width: 350px;
+    height: 60px;
+    border-radius: 12px;
+    border: 2px solid #01D277;
+    color: #01D277;
+    transition: all .5s;
+}
+
+.buttonFilters:hover {
+    background-color: #01D277;
+    color: #000;
+    font-weight: bold;
+}
+
+#searchMovie {
+    border-bottom: #01d277;
+}
+
+.searchInput > label {
+    color: white;
+}

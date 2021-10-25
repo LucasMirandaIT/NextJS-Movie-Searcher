@@ -1,0 +1,17 @@
+{
+    "title": "Empfehlungen",
+    "popular": "Beliebt",
+    "latest": "Neueste",
+    "topRated": "Bestbewertet",
+    "movieItem": {
+        "seeMore": "Klicken Sie hier, um mehr zu sehen..."
+    },
+    "movieDetails": {
+        "genres": "Genres",
+        "releaseDate": "Veröffentlichungsdatum",
+        "note": "Auswertung",
+        "overview": "Überblick",
+        "prevision": "Vorschau",
+        "relatedMovies": "Ähnliche Filme"
+    }
+}

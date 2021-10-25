@@ -1,0 +1,17 @@
+{
+    "title": "Recommendations",
+    "popular": "Popular",
+    "latest": "In Theater",
+    "topRated": "Top Rated",
+    "movieItem": {
+        "seeMore": "Click to see more..."
+    },
+    "movieDetails": {
+        "genres": "Genres",
+        "releaseDate": "Release Date",
+        "note": "Note",
+        "overview": "Overview",
+        "prevision": "Prevision",
+        "relatedMovies": "Related Movies"
+    }
+}

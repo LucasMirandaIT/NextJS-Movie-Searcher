@@ -1,0 +1,23 @@
+.menuList {
+    list-style: none;
+}
+.menuList > li {
+    cursor: pointer;
+    transition: 1s all;
+}
+
+.menuList > li:hover {
+    transform-origin: center;
+    transform: scale(1.2);
+    transition: 1s all;
+    color: #01D277;
+}
+
+.activeOption {
+    color: #01D277;
+}
+
+.containerMovies {
+    padding: 20px 30px;
+        margin-bottom: 50px;
+}

@@ -1,0 +1,52 @@
+.posterImg {
+    width: 10vw;
+    border-radius: 10px 0 0 10px;
+}
+
+.movieInfo {
+    display: flex;
+    background: #FFF;
+    color: #000;
+    border-radius: 10px;
+    /* padding: 5px; */
+    height: 200px;
+    cursor: pointer;
+    transition: all .4s;
+}
+.dialogCustom {
+    background-color: #01d277;
+}
+.movieInfo:hover {
+    transform: scale(1.1);
+    background-color: #01d277;
+    color: white;
+    transition: all .4s;
+}
+
+.movieDetailedInfo {
+    padding: 0 5px;
+}
+
+.movieTitle, .movieReleaseDate {
+    margin: 0;
+}
+.movieTitle {
+    font-size: 22px;
+    font-weight: bold;
+}
+.movieReleaseDate {
+
+}
+
+@media (max-width: 500px) {
+    .posterImg {
+        width: 30vw;
+    }
+
+}
+@media (min-width: 501px) and (max-width: 860px) {
+    .posterImg {
+        width: 20vw;
+    }
+    
+}

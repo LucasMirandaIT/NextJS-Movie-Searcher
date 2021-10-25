@@ -1,0 +1,50 @@
+
+.footer {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    
+    background: #13131393;
+    backdrop-filter: blur(2px);
+  }
+  
+  .footer a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .contactsLogo {
+    font-size: 32px;
+    transition: all .5s;
+  }
+
+  .contactsLogo:hover {
+    font-size: 48px;
+    color: #01D277;
+  }
+
+  .countriesFlag {
+    width: 20%;
+    height: 20%;
+    border-radius: '50%';
+    cursor: pointer;
+    transition: 1s transform;
+  }
+  .countriesFlag:hover {
+    transform-origin: center;
+    transform: scale(1.4);
+    transition: 1s transform;
+  }
+  .countriesFlag:not(:last-child) {
+    margin-right: 8px;
+  }
+
+  .translationContainer {
+    width: 10%;
+    justify-content: center;
+  }

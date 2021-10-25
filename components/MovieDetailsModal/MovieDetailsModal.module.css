@@ -1,0 +1,58 @@
+.container {
+    padding: 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .container main {
+      width: 100%;
+  }
+
+.movieSection {
+    display: flex;
+    z-index: 2;
+}
+
+.posterImg {
+    width: 25%;
+    /* max-width: 400px; */
+}
+.movieVoteAverage {
+    padding: .3em;
+    min-width: 50px;
+    text-align: center;
+    color: white;
+}
+
+.movieDetails_genres, .movieDetails_releaseDate, .movieDetails_voteAverage {
+    display: flex;
+    align-items: baseline;
+}
+.movieDetails_genres > p, .movieDetails_releaseDate > p, .movieDetails_voteAverage > p {
+    margin: 0;
+}
+.detailsKey {
+    font-weight: bold;
+}
+.movieInformation {
+    padding-left: 10px;
+}
+
+.movieDetails_overview {
+
+}
+
+.movieDetails_voteAverage {
+
+}
+
+.movieDetails_releaseDate {
+
+}
+
+.similarMovies {
+    display: flex;
+}

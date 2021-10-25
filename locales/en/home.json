@@ -1,0 +1,13 @@
+{
+    "movieDetails": {
+        "genres": "Genres",
+        "releaseDate": "Release Date",
+        "note": "Note",
+        "overview": "Overview",
+        "prevision": "Prevision",
+        "relatedMovies": "Related Movies"
+    },
+    "movieItem": {
+        "seeMore": "Click to see more..."
+    }
+}

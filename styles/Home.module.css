@@ -1,0 +1,109 @@
+.container {
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.moviesList {
+  margin-bottom: 70px;
+}
+
+.main {
+  padding: 5rem 0;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 1s;
+}
+.main.expanded {
+  padding: 0rem;
+  transition: all 1s;
+}
+.theatersIcon {
+  font-size: 10vw;
+  color: #01D277;
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.headerContainer.expanded {
+  flex-direction: row;
+  justify-content: space-between;
+  width: 96%;
+}
+.headerContainer > .icons {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+}
+.headerContainer.expanded > .icons {
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  width: 30%;
+}
+.headerContainer.expanded > h1 {
+  font-size: 1.6em;
+}
+.headerContainer.expanded > main {
+  width: 30%;
+}
+
+.movieDbLogo {
+  width: 200px;
+	transition: 0.3s ease-in-out;
+}
+
+.movieDbLogo:hover {
+	transform: scale(1.2);
+}
+
+.title a {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+.grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin-top: 3rem;
+}
+
+.logo {
+  height: 1em;
+  margin-left: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    width: 100%;
+    flex-direction: column;
+  }
+  .movieDbLogo {
+    display: none;
+  }
+  .headerContainer.expanded > h1 {
+    font-size: 1em;
+  }
+  .headerContainer.expanded > .icons {
+    width: auto;
+    margin-right: 15px;
+  }
+  .main.expanded {
+    width: 60%;
+  }
+}
