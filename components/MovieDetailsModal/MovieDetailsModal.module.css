@@ -56,3 +56,12 @@
 .similarMovies {
     display: flex;
 }
+
+@media (max-width: 450px) {
+    .movieDetails_genres, .movieDetails_overview, .movieDetails_releaseDate {
+        display: block;
+    }
+    .posterImg {
+        width: 46%;
+    }
+}

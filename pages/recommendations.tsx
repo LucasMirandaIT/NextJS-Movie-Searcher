@@ -9,7 +9,7 @@ import router, { useRouter } from "next/router";
 import { Movie } from "../interfaces/movie";
 
 import styles from '../styles/Recommendations.module.css';
-import { Grid } from "@mui/material";
+import { CircularProgress, Grid } from "@mui/material";
 import MovieItem from "../components/MovieItem/MovieItem";
 import HomeIcon from '@mui/icons-material/Home';
 
@@ -21,6 +21,7 @@ const Recommendations: NextPage = () => {
 
     const [movies, setMovies] = useState<Movie[]>([]);
     const [selectedRecommendation, setSelectedRecommendation] = useState<string>('popular');
+    const [isLoading, setIsLoading] = useState(false);
 
     const recommendationsOptions = [
         { label: tr('popular'), value: 'popular' },
@@ -33,23 +34,27 @@ const Recommendations: NextPage = () => {
     }, []);
 
     const getPopular = () => {
+        setIsLoading(true);
         getPopularMovies(locale ?? 'en').then((res) => {
             setMovies(res.results);
-        });
+        }).finally(() => setIsLoading(false));
     };
     const getLatest = () => {
+        setIsLoading(true);
         getLatestMovies(locale ?? 'en').then((res) => {
             setMovies(res.results);
-        });
+        }).finally(() => setIsLoading(false));
     };
     const getTopRated = () => {
+        setIsLoading(true);
         getTopRatedMovies(locale ?? 'en').then((res) => {
             setMovies(res.results);
-        });
+        }).finally(() => setIsLoading(false));
     };
 
     const handleClickOption = (option: string) => {
         setSelectedRecommendation(option);
+        setIsLoading(true);
         switch (option) {
             case 'popular':
                 getPopular();
@@ -76,7 +81,7 @@ const Recommendations: NextPage = () => {
             <Grid container className={styles.containerMovies}>
                 <Grid md={2}>
                     <ul className={styles.menuList}>
-                        <li onClick={() => router.push("/")} style={{fontSize: 22, marginLeft: '-22px', marginBottom: 15}}><HomeIcon /> Home</li>
+                        <li onClick={() => router.push("/")} style={{ fontSize: 22, marginLeft: '-22px', marginBottom: 15 }}><HomeIcon /> Home</li>
                         {
                             recommendationsOptions.map((option) => {
                                 return <li className={`${selectedRecommendation === option.value ? styles.activeOption : ''}`} onClick={() => handleClickOption(option.value)}>{option.label}</li>
@@ -85,17 +90,24 @@ const Recommendations: NextPage = () => {
                     </ul>
                 </Grid>
 
-                <Grid md={10}>
-                    {movies.length> 0 ? (
+                {isLoading ?
+                <>
+                <Grid md={10} className={styles.gridLoading}>
+                    <CircularProgress color="success" />
+                </Grid>
+                </>
+                :
+                ( <Grid md={10}>
+                    {movies.length > 0 ? (
                         <Grid container spacing={2} className={styles.moviesGrid}>
                             {movies.map((movie: any) => (
                                 <Grid item xs={12} md={6} key={movie.id}>
-                                    <MovieItem movie={movie} translationFile="recommendations"/>
+                                    <MovieItem movie={movie} translationFile="recommendations" />
                                 </Grid>
                             ))}
                         </Grid>
                     ) : <></>}
-                </Grid>
+                </Grid>)}
             </Grid>
 
         </>

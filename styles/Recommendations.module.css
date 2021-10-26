@@ -21,3 +21,9 @@
     padding: 20px 30px;
         margin-bottom: 50px;
 }
+
+.gridLoading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
