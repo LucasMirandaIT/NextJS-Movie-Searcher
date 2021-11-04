@@ -1,13 +1,13 @@
-Movie Searcher
+# Movie Searcher <br/>
 A Movie Searcher using the API provided by MovieDB with Next.JS.
 
-Technologies:
-NextJS
-React
-HTML
-CSS
-Javascript
-Vercel
+## Technologies:
+NextJS <br/>
+React <br/>
+HTML <br/>
+CSS <br/>
+Javascript <br/>
+Vercel <br/>
 
-Demo:
+## Demo:  <br/>
 https://next-js-movie-searcher.vercel.app
